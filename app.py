@@ -17,7 +17,7 @@ def main():
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
         # Assuming the uploaded file is a CSV, load it into a DataFrame
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file, delimiter=";")
 
         # Crop selection
         # Replace this list with your actual list of crops
