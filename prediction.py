@@ -1,8 +1,8 @@
-from spectra import *
 import pandas as pd
 import differint.differint as dif
 from prettytable import PrettyTable
 from joblib import Parallel, delayed
+import tensorflow as tf
 
 
 def _apply_gli(order, nm, percent_r):
