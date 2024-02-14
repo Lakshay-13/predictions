@@ -4,8 +4,7 @@ from prediction import *
 
 # Dummy function for processing data
 # Replace or modify this with your actual processing logic
-def process_data(df, crop_name):
-    data = pd.read_csv('test.csv', delimiter=';')
+def process_data(data, crop_name):
     temp = get_nn_data(data, [0.5, 1, 1.2, 1.5, 2, 2.5, 3])
     results = predict(temp.drop('nm', axis=1).values.tolist(), crop_name)
     return results
