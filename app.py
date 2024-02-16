@@ -4,8 +4,12 @@ from prediction import *
 
 # Dummy function for processing data
 # Replace or modify this with your actual processing logic
+@st.cache_data
+def get_tempdata(data, derivatives):
+    return get_nn_data(data, derivatives)
+
 def process_data(data, crop_name):
-    temp = get_nn_data(data, [0.5, 1, 1.2, 1.5, 2, 2.5, 3])
+    temp = get_tempdata(data,[0.5, 1, 1.2, 1.5, 2, 2.5, 3])
     results = predict(temp.drop('nm', axis=1).values.tolist(), crop_name)
     return results
 
@@ -27,7 +31,7 @@ def main():
         # Process data based on selected crop
         if st.button('Show Results'):
             result_df = process_data(df, get_crop_id(selected_crop))
-            # Display results - replace this with your method of displaying a pretty table
+            # Display results
             c1, c2, c3 = st.columns([1,2,1])
             with c2:
                 st.text(result_df)
